@@ -43,5 +43,7 @@ int	rrr(t_stack **a, t_stack **b);
 void    n2sort(t_stack **a, t_stack **b);
 void    n22sort(t_stack **a, t_stack **b);
 void    nsqrtnsort(t_stack **a, t_stack **b);
+// void    nlognsort(t_stack **a, t_stack **b);
+// void    adptsort(t_stack **a, t_stack **b)
 
 #endif

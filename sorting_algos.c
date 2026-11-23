@@ -23,7 +23,7 @@ int max_pos(t_stack *a)
     int val;
     int pos;
 
-    if (!a)
+    if (!a || !a->next)
         return (-1);
     tmp = a;
     val = a->val;
@@ -41,12 +41,14 @@ int max_pos(t_stack *a)
     return (pos + 1);
 }
 
-void    n2sort(t_stack **a, t_stack **b) // 
+void    n2sort(t_stack **a, t_stack **b)
 {
     int i;
     int stk_len;
     int end;
 
+    if (is_sorted(*a))
+        return ;
     end = max_pos(*a);
     stk_len = stack_len(*a);
     while (end != -1)
@@ -57,7 +59,7 @@ void    n2sort(t_stack **a, t_stack **b) //
             while (i-- > 0)
             {
                 rra(a);
-                printf("rra\n");
+                ft_printf("rra\n");
             }
         }
         else
@@ -66,50 +68,85 @@ void    n2sort(t_stack **a, t_stack **b) //
             while (i-- > 0)
             {
                 ra(a);
-                printf("ra\n");
+                ft_printf("ra\n");
             }
         }
         pb(b, a);
-        printf("pb\n");
+        ft_printf("pb\n");
         end = max_pos(*a);
         stk_len--;
     }
     while (pa(a, b)) 
-        printf("pa\n");
+        ft_printf("pa\n");
 }
-///////
-
-void    n22sort(t_stack **a, t_stack **b) // trush
-{
-    while (pb(b, a))
-    {
-        printf("pb\n");
-        if ((*b)->next && (*b)->val < (*b)->next->val)
-        {
-            sb(*b);
-            printf("sb\n");
-        }
-    }
-    while (pa(a, b))
-    {
-        printf("pa\n");
-        if ((*a)->next && (*a)->val > (*a)->next->val)
-        {
-            sa(*a);
-            printf("sa\n");
-        }
-    }
-    if (!is_sorted(*a))
-        n22sort(a, b);
-}
-
 //////
 
+//// O(n * log(n))
 
+// void    nlognsort(t_stack **a, t_stack **b)
+// {
+//     return ;
+// }
+
+////
 
 //// O(n * sqrt(n))
 
+int ft_pivot(t_stack *a)
+{
+    int max;
+    int min;
+
+    max = a->val;
+    min = max;
+    while (a)
+    {
+        if (min > a->val)
+            min = a->val;
+        if (max < a->val)
+            max = a->val;
+        a = a->next;
+    }
+    return ((min + max) / 2);
+}
+
 void    nsqrtnsort(t_stack **a, t_stack **b)
 {
-    
+    int pivot;
+    int len;
+
+    len = stack_len(*a);
+    if (len == 2)
+    {
+        if ((*a)->val > (*a)->next->val)
+        {
+            sa(*a);
+            ft_printf("sa\n");
+        }
+        return ;
+    }
+    pivot = ft_pivot(*a);
+    while (len-- > 0)
+    {
+        if ((*a)->val < pivot)
+        {
+            pb(b, a);
+            ft_printf("pb\n");
+        }
+        else    
+        {
+            ra(a);
+            ft_printf("ra\n");
+        }
+    }
+    nsqrtnsort(a, b);
+    nsqrtnsort(b, a);
 }
+
+///
+
+//// adapt
+
+// void    adptsort(t_stack **a, t_stack **b)
+
+///

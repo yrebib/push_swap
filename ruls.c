@@ -101,7 +101,7 @@ void	ft_print_list(t_stack *a)
 
 int	is_sorted(t_stack *a)
 {
-	if (!a->next)
+	if (!a || !a->next)
 		return 1;
 	while (a->next)
 	{
