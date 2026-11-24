@@ -29,6 +29,46 @@ static void    execut_mode(t_stack **a, t_stack **b, int mode)
     return ;
 }
 
+static int  has_dubs(t_stack *a)
+{
+    t_stack *i;
+    t_stack *j;
+
+    i = a;
+    while (i)
+    {
+        j = i->next;
+        while (j)
+        {
+            if (i->val == j->val)
+                return (1);
+            j = j->next;
+        }
+        i = i->next;
+    }
+    return (0);
+}
+
+static int    creat_stack(t_stack **a, char **av, int start, int end)
+{
+    int i;
+
+    i = start;
+    while (i < end)
+    {
+        if (!atoi(av[i + 1]) && ft_strncmp(av[i + 1], "0", 1)
+            && ft_strncmp(av[i + 1], "-0", 2) && ft_strncmp(av[i + 1], "+0", 2))
+        {
+            free_stack(a);
+            ft_printf("Error\n");
+            return (0);
+        }
+        tail(a, atoi(av[i + 1]));
+        i++;
+    } 
+    return (1);
+}
+
 int  main(int ac, char *av[])
 {
     t_stack *a = NULL;
@@ -43,23 +83,12 @@ int  main(int ac, char *av[])
     if (*av[1] == '-' && *(av[1] + 1) == '-' && ++i)
         mode = ft_mode(av[1]);
     if (mode == 0)
-        return (ft_printf("Error\n"), lseekl);
-    // ft_printf("mode = %d\n", mode);
-    // ft_printf("i = %d\n", i);
-    while (i < ac - 1)
-    {
-        if (!atoi(av[i + 1]) && ft_strncmp(av[i + 1], "0", 1)
-            && ft_strncmp(av[i + 1], "-0", 2) && ft_strncmp(av[i + 1], "+0", 2))
-            return (ft_printf("Error\n"), 0);
-        tail(&a, atoi(av[i + 1]));
-        i++;
-    }
+        return (ft_printf("Error\n"), 0);
+    if (!creat_stack(&a, av, i, ac - 1))
+        return (0);
+    if (has_dubs(a))
+        return (free_stack(&a),  ft_printf("Error\n"), 0);
     execut_mode(&a, &b, mode);
-    ft_printf("+++++++++++++++++++++++++\n");
     ft_print_list(a);
-    // n22sort(&a, &b);
-    // nsqrtnsort(&a, &b);
-    // ft_printf("+++++++++++++++++++++++++\n");
-    // ft_print_list(a);
     return (0);
 }

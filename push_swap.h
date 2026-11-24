@@ -18,6 +18,13 @@ typedef struct	s_ops
 	struct s_op	*next;
 }				t_ops;
 
+typedef struct	s_bench
+{
+	int	ops_rep[11];
+	int	disorder;
+}				t_bench;
+
+
 // ruls
 void	free_stack(t_stack **a);
 int		push(t_stack **a, int val);
@@ -45,5 +52,10 @@ void    n22sort(t_stack **a, t_stack **b);
 void    nsqrtnsort(t_stack **a, t_stack **b);
 // void    nlognsort(t_stack **a, t_stack **b);
 // void    adptsort(t_stack **a, t_stack **b)
+
+// bench
+
+float   disorder(t_stack *a);
+
 
 #endif
