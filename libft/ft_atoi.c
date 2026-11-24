@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	long	nb;
 	int		sign;
@@ -30,5 +30,11 @@ int	ft_atoi(const char *str)
 		str++;
 	while (*str && ft_isdigit(*str))
 		nb = nb * 10 + (*str++ - '0');
-	return ((int)nb * sign);
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (LONG_MAX);
+		str++;
+	}
+	return (nb * sign);
 }

@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -68,7 +69,7 @@ void				ft_puthex(unsigned long nbr, int *count, char flag);
 void				ft_putux(unsigned long nbr, int *count, char flag);
 void				ft_putp(void *ptr, int *count);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
-int					ft_atoi(const char *str);
+long					ft_atoi(const char *str);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
