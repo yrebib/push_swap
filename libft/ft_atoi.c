@@ -19,22 +19,19 @@ long	ft_atoi(const char *str)
 
 	sign = 1;
 	nb = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-')
+	if (*str == '-' || *str == '+')
 	{
-		sign *= -1;
+		if (*str == '-')
+			sign *= -1;
 		str++;
 	}
-	else if (*str == '+')
-		str++;
-	while (*str && ft_isdigit(*str))
-		nb = nb * 10 + (*str++ - '0');
 	while (*str)
 	{
 		if (!ft_isdigit(*str))
 			return (LONG_MAX);
-		str++;
+		nb = nb * 10 + (*str++ - '0');
 	}
+	if (nb < INT_MIN || nb > INT_MAX)
+		return (LONG_MAX);
 	return (nb * sign);
 }

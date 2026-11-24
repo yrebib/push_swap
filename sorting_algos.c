@@ -53,7 +53,7 @@ void    n2sort(t_stack **a, t_stack **b)
     stk_len = stack_len(*a);
     while (end != -1)
     {
-        if (end > stk_len / 2)
+        if (end > stk_len / 2 + 1)
         {
             i = stk_len - end + 1;
             while (i-- > 0)

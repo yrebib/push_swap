@@ -13,18 +13,19 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }				t_stack;
 
-typedef struct	s_ops
-{
-	char	*op;
-	struct s_op	*next;
-}				t_ops;
+// typedef enum	s_op
+// {
+// 	sa, sb, ss,
+// 	pa, pb,
+// 	ra, rb, rr,
+// 	rra, rrb, rrr,
+// 	op_count
+// }				t_op;
 
-typedef struct	s_bench
-{
-	int	ops_rep[11];
-	int	disorder;
-}				t_bench;
-
+// typedef struct	s_count_ops
+// {
+// 	int	count[op_count];
+// }				t_count_ops;
 
 // ruls
 void	free_stack(t_stack **a);

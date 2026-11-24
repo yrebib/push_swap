@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+
+
 float   disorder(t_stack *a)
 {
     t_stack *i;
@@ -25,7 +27,8 @@ float   disorder(t_stack *a)
     return (mstk / total);
 }
 
-// void    ft_bench(void)
+// void    ft_bench(t_op op,)
 // {
-//     static
+//     static t_count_ops count;
+
 // }
