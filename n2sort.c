@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+
+
 //// O(n ^ 2)
 
 int stack_len(t_stack *a)
@@ -79,74 +81,3 @@ void    n2sort(t_stack **a, t_stack **b)
     while (pa(a, b)) 
         ft_printf("pa\n");
 }
-//////
-
-//// O(n * log(n))
-
-// void    nlognsort(t_stack **a, t_stack **b)
-// {
-//     return ;
-// }
-
-////
-
-//// O(n * sqrt(n))
-
-int ft_pivot(t_stack *a)
-{
-    int max;
-    int min;
-
-    max = a->val;
-    min = max;
-    while (a)
-    {
-        if (min > a->val)
-            min = a->val;
-        if (max < a->val)
-            max = a->val;
-        a = a->next;
-    }
-    return ((min + max) / 2);
-}
-
-void    nsqrtnsort(t_stack **a, t_stack **b)
-{
-    int pivot;
-    int len;
-
-    len = stack_len(*a);
-    if (len == 2)
-    {
-        if ((*a)->val > (*a)->next->val)
-        {
-            sa(*a);
-            ft_printf("sa\n");
-        }
-        return ;
-    }
-    pivot = ft_pivot(*a);
-    while (len-- > 0)
-    {
-        if ((*a)->val < pivot)
-        {
-            pb(b, a);
-            ft_printf("pb\n");
-        }
-        else    
-        {
-            ra(a);
-            ft_printf("ra\n");
-        }
-    }
-    nsqrtnsort(a, b);
-    nsqrtnsort(b, a);
-}
-
-///
-
-//// adapt
-
-// void    adptsort(t_stack **a, t_stack **b)
-
-///
