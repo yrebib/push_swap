@@ -41,7 +41,6 @@ int ft_part_a(t_stack **a, t_stack **b, int size)
     rotate = 0;
     i = size;
     pivot = ft_pivot(*a, size);
-    // ft_printf("pivot == %d\n", pivot);
     while (i-- > 0)
     {
         if ((*a)->val < pivot)
@@ -65,7 +64,6 @@ int ft_part_a(t_stack **a, t_stack **b, int size)
             ft_printf("rra\n");
         }
     }
-    // ft_printf("aaaaaa\n");
     return (pushed);
 }
 
@@ -80,7 +78,6 @@ int ft_part_b(t_stack **a, t_stack **b, int size)
     rotate = 0;
     i = size;
     pivot = ft_pivot(*b, size);
-    // ft_printf("pivot == %d\n", pivot);
     while (i-- > 0)
     {
         if ((*b)->val > pivot)
@@ -104,7 +101,6 @@ int ft_part_b(t_stack **a, t_stack **b, int size)
             ft_printf("rrb\n");
         }
     }
-    // printf("bbbbb\n");
     return (pushed);
 }
 
@@ -124,8 +120,10 @@ void    quick_sort_a(t_stack **a, t_stack **b, int size)
         return ;
     }
     pushed = ft_part_a(a, b, size);
-    quick_sort_a(a, b, size - pushed);
-    quick_sort_b(a, b, pushed);
+    if (!is_sorted(*a))
+        quick_sort_a(a, b, size - pushed);
+    if (!is_sorted(*b));
+        quick_sort_b(a, b, pushed);
 }
 
 void    quick_sort_b(t_stack **a, t_stack **b, int size)
@@ -153,6 +151,8 @@ void    quick_sort_b(t_stack **a, t_stack **b, int size)
         return ;
     }
     pushed = ft_part_b(a, b, size);
-    quick_sort_a(a, b, pushed);
-    quick_sort_b(a, b, size - pushed);
+    if (!is_sorted(*a))
+        quick_sort_a(a, b, pushed);
+    if (!is_sorted(*b))
+        quick_sort_b(a, b, size - pushed);
 }
