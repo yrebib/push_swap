@@ -146,7 +146,7 @@ int		pa(t_stack **a, t_stack **b)
 	return (1);
 }
 
-int		pb(t_stack **b, t_stack **a)
+int		pb(t_stack **a, t_stack **b)
 {
 	return (pa(b, a));
 }

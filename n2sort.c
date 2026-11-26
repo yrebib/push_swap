@@ -73,7 +73,7 @@ void    n2sort(t_stack **a, t_stack **b)
                 ft_printf("ra\n");
             }
         }
-        pb(b, a);
+        pb(a, b);
         ft_printf("pb\n");
         end = max_pos(*a);
         stk_len--;

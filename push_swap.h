@@ -50,8 +50,17 @@ int	rrr(t_stack **a, t_stack **b);
 //
 
 void    n2sort(t_stack **a, t_stack **b);
-void    n22sort(t_stack **a, t_stack **b);
-void    nsqrtnsort(t_stack **a, t_stack **b);
+int		stack_len(t_stack *a);
+int		max_pos(t_stack *a);
+
+void    quick_sort_a(t_stack **a, t_stack **b, int size);
+void    quick_sort_b(t_stack **a, t_stack **b, int size);
+int		ft_part_a(t_stack **a, t_stack **b, int size);
+int		ft_part_b(t_stack **a, t_stack **b, int size);
+int 	stack_is_sort(t_stack *a);
+int 	ft_pivot(t_stack *a, int len);
+
+
 // void    nlognsort(t_stack **a, t_stack **b);
 // void    adptsort(t_stack **a, t_stack **b)
 

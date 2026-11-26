@@ -28,17 +28,6 @@ int    creat_stack(t_stack **a, char **av, int start, int end)
     return (1);
 }
 
-void	ft_print_list(t_stack *a)
-{
-	int	i = 1;
-
-	while (a)
-	{
-		printf("node[%d] = %d\n", i++, a->val);
-		a = a->next;
-	}
-}
-
 int main(int ac, char *av[])
 {
     t_stack *a = NULL;
@@ -47,7 +36,9 @@ int main(int ac, char *av[])
 
     if (!creat_stack(&a, av, i, ac - 1))
         return (0);
-    quick_sort_a(&a, &b, ac - 1, ft_pivot(a, ac - 1));
-    ft_print_list(a);
+    quick_sort_a(&a, &b, stack_len(a));
+    // ft_print_list(a);
+    // ft_printf("|||||||\n");
+    // ft_print_list(b);
     return (0);
 }
