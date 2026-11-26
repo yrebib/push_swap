@@ -21,8 +21,8 @@ static int ft_mode(char *str1, char *str2, int *i)
         return (1 + bench);  
     // if (!ft_strncmp("--medium", str2, 8) && !str2[8])
     //     return (2 + bench);
-    // if (!ft_strncmp("--complex", str2, 9) && !str2[9])
-    //     return (3 + bench);
+    if (!ft_strncmp("--complex", str2, 9) && !str2[9])
+         return (3 + bench);
     // if (!ft_strncmp("--adaptive", str2, 10) && !str2[10])
     //     return (4 + bench);
     else
@@ -38,8 +38,8 @@ static void    execut_mode(t_stack **a, t_stack **b, int mode)
         n2sort(a, b);
     // else if (mode == 2)
     //     nsqrtnsort(a, b);
-    // else if (mode == 3)
-    //     nlognsort(a, b);
+    else if (mode == 3)
+        quick_sort_a(a, b, stack_len(*a));
     // else if (mode == 4)
     //     adptsort(a, b);
     else
@@ -49,8 +49,8 @@ static void    execut_mode(t_stack **a, t_stack **b, int mode)
             n2sort(a, b);
     //     else if (mode == 6)
     //         nsqrtnsort(a, b);
-    //     else if (mode == 7)
-    //         nlognsort(a, b);
+        else if (mode == 7)
+            quick_sort_a(a, b, stack_len(*a));
     //     else if (mode == 8)
     //         adptsort(a, b);
     }

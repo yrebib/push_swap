@@ -122,7 +122,7 @@ void    quick_sort_a(t_stack **a, t_stack **b, int size)
     pushed = ft_part_a(a, b, size);
     if (!is_sorted(*a))
         quick_sort_a(a, b, size - pushed);
-    if (!is_sorted(*b));
+    if (!is_sorted(*b))
         quick_sort_b(a, b, pushed);
 }
 
