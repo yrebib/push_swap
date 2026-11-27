@@ -13,6 +13,12 @@ typedef struct	s_stack
 	struct s_stack	*next;
 }				t_stack;
 
+typedef struct	s_ops
+{
+	char	*op;
+	struct s_ops	*next;
+}				t_ops;
+
 // typedef enum	s_op
 // {
 // 	sa, sb, ss,
